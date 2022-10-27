@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
+
         <div>
             <div className="hero min-h-screen" style={{ backgroundImage: `url("https://20fd661yccar325znz1e9bdl-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/best-coding-for-intermediate-teens-scaled.jpeg")` }}>
                 <div className="hero-overlay bg-opacity-70"></div>

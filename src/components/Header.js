@@ -6,7 +6,6 @@ const Header = () => {
     return (
 
         <div className="navbar bg-orange-100 sticky top-0  z-50 px-20">
-
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,6 +28,7 @@ const Header = () => {
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/courses'>COURSES</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/faq'>FAQ</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/blog'>BLOG</Link></li>
+                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/login'>LOG IN</Link></li>
                 </ul>
                 <div>
                     <a className="btn">Get started</a>
@@ -40,6 +40,7 @@ const Header = () => {
                         </div>
                     </label>
                 </div>
+
             </div>
 
 

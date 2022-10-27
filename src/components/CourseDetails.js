@@ -13,6 +13,7 @@ const CourseDetails = () => {
                 <p className='text-xl mb-3'>{details}</p>
                 <div className="card-actions justify-end">
                     <Link to={`/checkout/${id}`}><button className="btn btn-primary text-xl mx-auto">Get premium access</button></Link>
+
                 </div>
             </div>
         </div>
