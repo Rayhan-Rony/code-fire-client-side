@@ -2,13 +2,16 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
-    const { signIn, signinWithProvider } = useContext(AuthContext)
+    const { signIn, signinWithProvider, setLoading } = useContext(AuthContext)
     const gitProvider = new GithubAuthProvider()
     const provider = new GoogleAuthProvider()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     const [error, setError] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -22,9 +25,15 @@ const Login = () => {
                 console.log(user)
                 form.reset()
                 setError('')
+                if (user.email) {
+                    navigate(from, { replace: true })
+                }
 
             })
             .catch(error => setError(error.message))
+            .finally(() => {
+                setLoading(false)
+            })
 
     }
     const handleSignInWithGoogle = () => {
@@ -73,7 +82,7 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="Password" className="input input-bordered" />
-                            <div>
+                            <div className='text-red-400'>
                                 <p>{error}</p>
                             </div>
                             <label className="label">

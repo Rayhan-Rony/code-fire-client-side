@@ -9,6 +9,7 @@ import Home from "../components/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Main from "../layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([{
     path: '/',
@@ -40,7 +41,7 @@ export const routes = createBrowserRouter([{
     },
     {
         path: '/checkout/:id',
-        element: <Checkout></Checkout>,
+        element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
         loader: ({ params }) => fetch(`https://code-fire-serrver.vercel.app/checkout/${params.id}`)
 
     },

@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createContext, useEffect } from "react";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
 import app from "../firebase/firebase.config";
 import { useState } from "react";
 
@@ -8,31 +8,45 @@ const auth = getAuth(app)
 
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState('Rahim')
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const signinWithProvider = (provider) => {
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
     const updateUserProfile = (profile) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, profile)
     }
     const verifyEmail = () => {
+        setLoading(true)
         return sendEmailVerification(auth.currentUser)
     }
     const signIn = (email, password) => {
-
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const logOut = () => {
 
-        return signOut(auth)
-    }
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser === null || currentUser.email) {
+                setUser(currentUser)
+            }
 
-    const authInfo = { signIn, logOut, createUser, user, signinWithProvider, updateUserProfile, verifyEmail };
+            setLoading(false)
+        })
+        return () => {
+            unSubscribe()
+        }
+    }, [])
+
+    const authInfo = { setLoading, user, signIn, createUser, signinWithProvider, updateUserProfile, verifyEmail, loading };
 
     return (
         <AuthContext.Provider value={authInfo}>
