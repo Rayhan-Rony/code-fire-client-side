@@ -1,8 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import { AuthContext } from '../context/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
+    console.log(user)
     return (
 
         <div className="navbar bg-orange-100 sticky top-0  z-50 px-20">
@@ -30,13 +34,11 @@ const Header = () => {
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/blog'>BLOG</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/login'>LOG IN</Link></li>
                 </ul>
-                <div>
-                    <a className="btn">Get started</a>
-                </div>
+
                 <div>
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" />
+                            <img src={user.photoURL} title={user.displayName} />
                         </div>
                     </label>
                 </div>
