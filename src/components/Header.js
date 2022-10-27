@@ -18,28 +18,32 @@ const Header = () => {
                         <li><Link to='/blog'>BLOG</Link></li>
                     </ul>
                 </div>
-                <img className='w-10' src={logo} alt="" />
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to='/home'><img className='w-10' src={logo} alt="logo" /></Link>
+                <Link to='/home' className="btn btn-ghost normal-case text-xl font-extrabold">CODE FIRE</Link>
 
             </div>
 
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
-                    <li><Link to='/courses'>COURSES</Link></li>
-                    <li><Link to='/faq'>FAQ</Link></li>
-                    <li><Link to='/blog'>BLOG</Link></li>
+            <div className="navbar-end hidden lg:flex">
+                <ul className="menu menu-horizontal p-0 font-medium">
+                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/home'>HOME</Link></li>
+                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/courses'>COURSES</Link></li>
+                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/faq'>FAQ</Link></li>
+                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/blog'>BLOG</Link></li>
                 </ul>
-            </div>
-            <div className="navbar-end">
-                <a className="btn">Get started</a>
-            </div>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                    <img src="https://placeimg.com/80/80/people" />
+                <div>
+                    <a className="btn">Get started</a>
                 </div>
-            </label>
+                <div>
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img src="https://placeimg.com/80/80/people" />
+                        </div>
+                    </label>
+                </div>
+            </div>
 
-        </div>
+
+        </div >
 
     );
 };
