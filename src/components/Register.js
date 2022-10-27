@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
