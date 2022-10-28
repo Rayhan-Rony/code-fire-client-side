@@ -3,9 +3,10 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { AuthContext } from '../context/AuthProvider';
+import { FaUserAlt, } from "react-icons/fa";
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     console.log(user)
     return (
 
@@ -19,6 +20,9 @@ const Header = () => {
                         <li><Link to='/courses'>COURSES</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
                         <li><Link to='/blog'>BLOG</Link></li>
+                        {
+                            user ? <li className='hover:bg-orange-200 rounded-lg'><Link onClick={logOut} >LOG OUT</Link></li> : <li className='hover:bg-orange-200 rounded-lg'><Link to='/login'>LOG IN</Link></li>
+                        }
                     </ul>
                 </div>
                 <Link to='/home'><img className='w-10' src={logo} alt="logo" /></Link>
@@ -32,13 +36,17 @@ const Header = () => {
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/courses'>COURSES</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/faq'>FAQ</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/blog'>BLOG</Link></li>
-                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/login'>LOG IN</Link></li>
+                    {
+                        user ? <li className='hover:bg-orange-200 rounded-lg'><Link onClick={logOut} >LOG OUT</Link></li> : <li className='hover:bg-orange-200 rounded-lg'><Link to='/login'>LOG IN</Link></li>
+                    }
                 </ul>
 
                 <div>
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src={user.photoURL} title={user.displayName} />
+                            {
+                                user ? <img src={user?.photoURL} title={user?.displayName} alt="" /> : <FaUserAlt className='mt-3 ml-2'></FaUserAlt>
+                            }
                         </div>
                     </label>
                 </div>

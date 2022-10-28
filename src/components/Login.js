@@ -43,6 +43,9 @@ const Login = () => {
                 setError('')
                 const user = result.user
                 console.log(user)
+                if (user.email) {
+                    navigate(from, { replace: true })
+                }
 
 
             })
@@ -55,6 +58,9 @@ const Login = () => {
                 setError('')
                 const user = result.user
                 console.log(user)
+                if (user.email) {
+                    navigate(from, { replace: true })
+                }
 
 
             })
@@ -67,7 +73,7 @@ const Login = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="hero-content flex-col lg:flex-row-reverse w-1/2 mx-auto">
+            <div className="hero-content flex-col lg:flex-row-reverse lg:w-1/2 md:w-full mx-auto">
                 <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100 p-28">
                     <h1 className="text-3xl font-bold text-center">Login Now</h1>
                     <div className="card-body">

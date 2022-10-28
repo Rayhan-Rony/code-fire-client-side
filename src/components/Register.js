@@ -53,7 +53,7 @@ const Register = () => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <div className="hero-content flex-col lg:flex-row-reverse w-1/2 mx-auto">
+            <div className="hero-content flex-col lg:flex-row-reverse  lg:w-1/2 md:w-full mx-auto">
                 <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100 p-28">
                     <h1 className="text-3xl font-bold text-center">Register Now</h1>
                     <div className="card-body">
@@ -86,7 +86,7 @@ const Register = () => {
                             <p>{error}</p>
                         </div>
                         <div className="form-control mt-6">
-                            {/* <input type="submit" value="REGISTER" /> */}
+
                             <button type='submit' className="btn btn-primary">Register</button>
 
                         </div>
