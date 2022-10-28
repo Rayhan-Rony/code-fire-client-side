@@ -4,9 +4,21 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { AuthContext } from '../context/AuthProvider';
 import { FaUserAlt, } from "react-icons/fa";
+import { useState } from 'react';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [toggle, setToggle] = useState(true)
+    const handleToggleDarkmode = () => {
+        if (toggle) {
+            setToggle(false)
+        }
+        else {
+            setToggle(true)
+        }
+
+    }
+
     console.log(user)
     return (
 
@@ -20,10 +32,12 @@ const Header = () => {
                         <li><Link to='/courses'>COURSES</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
                         <li><Link to='/blog'>BLOG</Link></li>
+
                         {
                             user ? <li className='hover:bg-orange-200 rounded-lg'><Link onClick={logOut} >LOG OUT</Link></li> : <li className='hover:bg-orange-200 rounded-lg'><Link to='/login'>LOG IN</Link></li>
                         }
                     </ul>
+
                 </div>
                 <Link to='/home'><img className='w-10' src={logo} alt="logo" /></Link>
                 <Link to='/home' className="btn btn-ghost normal-case text-xl font-extrabold">CODE FIRE</Link>
@@ -41,18 +55,27 @@ const Header = () => {
                     }
                 </ul>
 
-                <div>
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            {
-                                user ? <img src={user?.photoURL} title={user?.displayName} alt="" /> : <FaUserAlt className='mt-3 ml-2'></FaUserAlt>
-                            }
-                        </div>
-                    </label>
-                </div>
 
             </div>
 
+            <div className='lg:ml-0 ml-32'>
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                        {
+                            user ? <img src={user?.photoURL} title={user?.displayName} alt="" /> : <FaUserAlt className='mt-3 ml-2'></FaUserAlt>
+                        }
+                    </div>
+                </label>
+            </div>
+            <div>
+                <input onClick={handleToggleDarkmode} type="checkbox" className="toggle" readOnly checked={toggle} />
+
+            </div>
+            <div className='text-sm font-semibold'>
+                {
+                    toggle ? <p>Light Mode</p> : <p>Dark Mode</p>
+                }
+            </div>
 
         </div >
 
