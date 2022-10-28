@@ -7,7 +7,7 @@ import { FaUserAlt, } from "react-icons/fa";
 import { useState } from 'react';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { p, user, logOut } = useContext(AuthContext)
     const [toggle, setToggle] = useState(true)
     const handleToggleDarkmode = () => {
         if (toggle) {
@@ -62,7 +62,7 @@ const Header = () => {
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         {
-                            user ? <img src={user?.photoURL} title={user?.displayName} alt="" /> : <FaUserAlt className='mt-3 ml-2'></FaUserAlt>
+                            user ? <img src={user.photoURL || p} title={user?.displayName} alt="" /> : <FaUserAlt className='mt-3 ml-2'></FaUserAlt>
                         }
                     </div>
                 </label>

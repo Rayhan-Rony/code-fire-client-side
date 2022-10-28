@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../context/AuthProvider';
 
 const Register = () => {
-    const { createUser, verifyEmail, updateUserProfile } = useContext(AuthContext)
+    const { setP, createUser, verifyEmail, updateUserProfile } = useContext(AuthContext)
 
     const [error, setError] = useState('')
 
@@ -23,6 +23,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user
+
                 console.log(user)
                 setError('')
                 form.reset()
@@ -74,7 +75,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name='photo' placeholder="Enter Your Photo URL" className="input input-bordered" required />
+                            <input onChange={(e) => setP(e.target.value)} type="text" name='photo' placeholder="Enter Your Photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
