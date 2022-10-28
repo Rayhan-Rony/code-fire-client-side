@@ -6,11 +6,11 @@ const ref = React.createRef();
 const CourseDetails = () => {
     const data = useLoaderData([])
     const { id, image_url, title, details } = data
-    console.log(image_url)
+
     const options = {
         orientation: 'landscape',
         unit: 'in',
-        // format: [4, 2]
+
     };
 
     return (

@@ -19,7 +19,7 @@ const Header = () => {
 
     }
 
-    console.log(user)
+
     return (
 
         <div className="navbar bg-orange-100 sticky top-0  z-50 px-20">
@@ -39,14 +39,14 @@ const Header = () => {
                     </ul>
 
                 </div>
-                <Link to='/home'><img className='w-10' src={logo} alt="logo" /></Link>
-                <Link to='/home' className="btn btn-ghost normal-case text-xl font-extrabold">CODE FIRE</Link>
+                <Link to='/'><img className='w-10' src={logo} alt="logo" /></Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl font-extrabold">CODE FIRE</Link>
 
             </div>
 
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 font-medium">
-                    <li className='hover:bg-orange-200 rounded-lg'><Link to='/home'>HOME</Link></li>
+
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/courses'>COURSES</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/faq'>FAQ</Link></li>
                     <li className='hover:bg-orange-200 rounded-lg'><Link to='/blog'>BLOG</Link></li>
@@ -57,8 +57,11 @@ const Header = () => {
 
 
             </div>
-
-            <div className='lg:ml-0 ml-32'>
+            {/* Following div responsive  code not working in firebase Live website  */}
+            <div>
+                <p>this</p>
+            </div>
+            <div className='lg:ml-0 ml-8'>
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         {
@@ -66,16 +69,17 @@ const Header = () => {
                         }
                     </div>
                 </label>
-            </div>
-            <div>
-                <input onClick={handleToggleDarkmode} type="checkbox" className="toggle" readOnly checked={toggle} />
+                <div>
+                    <input onClick={handleToggleDarkmode} type="checkbox" className="toggle" readOnly checked={toggle} />
 
+                </div>
+                <div className='text-sm font-semibold'>
+                    {
+                        toggle ? <p>Light Mode</p> : <p>Dark Mode</p>
+                    }
+                </div>
             </div>
-            <div className='text-sm font-semibold'>
-                {
-                    toggle ? <p>Light Mode</p> : <p>Dark Mode</p>
-                }
-            </div>
+
 
         </div >
 
