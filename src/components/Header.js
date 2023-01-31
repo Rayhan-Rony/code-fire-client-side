@@ -57,10 +57,7 @@ const Header = () => {
 
 
             </div>
-            {/* Following div responsive  code not working in firebase Live website  */}
-            <div>
-                <p>this</p>
-            </div>
+
             <div className='lg:ml-0 ml-8'>
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
